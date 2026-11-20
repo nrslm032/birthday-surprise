@@ -1,46 +1,4 @@
 
-/* =================================
-   SCREEN NAVIGATION
-================================= */
-
-// function showScreen(screenId) {
-
-//     const screens = [
-//         "login-screen",
-//         "birthday-screen",
-//         "memories-screen",
-//         "video-screen",
-//         "letter-screen",
-//         "final-screen"
-//     ];
-
-//     // Hide all existing screens
-//     screens.forEach(id => {
-
-//         const screen = document.getElementById(id);
-
-//         if (screen) {
-//             screen.hidden = true;
-//         }
-
-//     });
-
-//     // Show requested screen
-//     const nextScreen = document.getElementById(screenId);
-
-//     if (nextScreen) {
-
-//         nextScreen.hidden = false;
-
-//         console.log("Opened screen:", screenId);
-
-//     } else {
-
-//         console.error("Screen not found:", screenId);
-
-//     }
-
-// }
 
 function showScreen(screenId) {
     const screens = [
@@ -81,15 +39,20 @@ function showScreen(screenId) {
 const loginForm = document.getElementById("login-form");
 
 if (loginForm) {
-
-    loginForm.addEventListener("submit", function(event) {
-
+    loginForm.addEventListener("submit", event => {
         event.preventDefault();
 
-        showScreen("birthday-screen");
+        const password = document.getElementById("password").value;
+        const correctPassword = "2005";
 
+        if (password === correctPassword) {
+            showScreen("birthday-screen");
+        } else {
+            alert("Incorrect password! Please try again. ❤️");
+            document.getElementById("password").value = "";
+            document.getElementById("password").focus();
+        }
     });
-
 }
 
 
